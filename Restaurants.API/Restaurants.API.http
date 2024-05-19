@@ -1,6 +1,27 @@
-@Restaurants.API_HostAddress = http://localhost:5142
+@host = http://localhost
+@port = 5142
 
-GET {{Restaurants.API_HostAddress}}/weatherforecast/
+@Restaurants.API_HostAddress = https://localhost:7217
+
+GET {{Restaurants.API_HostAddress}}/api/weatherforecast/23/example?max=15
 Accept: application/json
+Guid: {{$guid}}
+LocalDate: {{$datetime iso8601}}
+Radom-Int: {{$randomInt}}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/weatherforecast/example
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/weatherforecast
+Content-Type: application/json
+
+"Jakub"
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/weatherforecast/generate?maxTemp=40&minTemp=0&qntResults=2
 
 ###

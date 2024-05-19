@@ -1,8 +1,11 @@
-﻿namespace Restaurants.API.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Restaurants.API.Controllers
 {
     public interface IWeatherForecastService
     {
         IEnumerable<WeatherForecast> Get();
+        IEnumerable<WeatherForecast> GetGenerate(int maxTemp, int minTemp, int qntResults);
     }
 
     public class WeatherForecastService : IWeatherForecastService
@@ -22,5 +25,17 @@
             })
             .ToArray();
         }
+
+        public IEnumerable<WeatherForecast> GetGenerate(int maxTemp, int minTemp, int qntResults)
+        {
+            return Enumerable.Range(1, qntResults).Select(index => new WeatherForecast
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+                TemperatureC = Random.Shared.Next(minTemp, maxTemp),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
+
     }
 }
