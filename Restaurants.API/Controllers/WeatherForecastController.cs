@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Restaurants.API.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class WeatherForecastController : ControllerBase
 {
     private readonly ILogger<WeatherForecastController> _logger;
@@ -17,6 +18,21 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet]
-    [Route("example")]
+    [Route("/example")]
     public IEnumerable<WeatherForecast> Get() => _weatherForecastService.Get();
+
+    [HttpPost("generate")]
+    public ObjectResult  GetGenerate([FromQuery] int maxTemp, [FromQuery] int minTemp, [FromQuery] int qntResults)
+    {
+        if (minTemp > maxTemp || qntResults < 1) return BadRequest("Invalid params.");
+
+        return Ok(_weatherForecastService.GetGenerate(maxTemp, minTemp, qntResults));
+    }
+
+
+    [HttpGet("currentDay")]
+    public WeatherForecast GetCurrentDayForecast() => _weatherForecastService.Get().First();
+
+    [HttpPost]
+    public string Hello([FromBody] string name) => $"Hello {name}";
 }
