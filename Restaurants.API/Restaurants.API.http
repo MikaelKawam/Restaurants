@@ -25,3 +25,27 @@ Content-Type: application/json
 POST {{Restaurants.API_HostAddress}}/api/weatherforecast/generate?maxTemp=40&minTemp=0&qntResults=2
 
 ###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/api/restaurant?id=1
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/4
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+    "Name": "Tasty Bites",
+    "Description": "A cozy Restaurant Serving a Variety of dishes.",
+    "Category": "Italiasdaan",
+    "ContactEmail": "info@tastybites.com",
+    "ContactNumber": "555-1234",
+    "City": "New York",
+    "Street": "123 Main Street",
+    "PostalCode": "10-001"
+}
+
+###
