@@ -249,7 +249,7 @@ namespace Restaurants.Infrastructure.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Nacionality")
+                    b.Property<string>("Nationality")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
