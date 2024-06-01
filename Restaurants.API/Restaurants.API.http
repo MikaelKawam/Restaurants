@@ -1,13 +1,10 @@
 @host = http://localhost
 @port = 5142
-
+@token = CfDJ8Na0jCuOmmJGu5k3mTAqutINaJXtu1bSFeFzCNYh4tW-MhCtUc8JOp-ibYo56VWbEqY5leZJB5cBAkZm9f-XAiCXWeuEQnnPiHjwzyXdFWKsH-kH8Vl-WsWPxYwgHq-U708Pe_foLJlFE0NVuaqnkjvI5z-HVo9Fe_-M96hzv85VGiigpwv833XrRm84-dvEP6VjOOpTrAVoR-MyL9qiWCYSg96wgqwRhosd5gUi-705gmj7OyaN1fioKqcwkKNAMuzO1NPBLK6bH12ye68YTcCLE_xNkWhldYKS3PdEsnXkgFym_a5yjVjQa2K1ah3SRBCQChRR_xq82S3Fl7Jrp1zPcZ9BTVN8N0e4t0BDuqjR0gUP4IoCdPPJRnOHoRjujtdb3OkJrhuvX84sQ2jzTelxwpAoDTT4IqTdAGeMZ8nTkE_tgyyts4r76tevfmi1jTdQAET3SDZxJBqUHfRFB2PKddZLAKH1voJYzzhABnT-AM4GyAFBnT-386AQ7bzlbaiM3QgD61snJYIKmbbecQHbc_FrQZ3cHrer7O1R_fGUEih-wP84LrQMXngfe13WC_LeN8MAvqu9XHUCgmte_u8PnSvqOrryJ_pMIS2dbnHybX-JM1D6mAgaK9ANwLv07PrFVudUgwmoqRsnQJfPEjBomaXtAAbzhwi4KLXzkMZFyqe7Z_LmudwsnlUI9uVlYA
 @Restaurants.API_HostAddress = https://localhost:7217
 
-GET {{Restaurants.API_HostAddress}}/api/weatherforecast/23/example?max=15
-Accept: application/json
-Guid: {{$guid}}
-LocalDate: {{$datetime iso8601}}
-Radom-Int: {{$randomInt}}
+GET {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
 
 ###
 
@@ -70,6 +67,26 @@ Content-Type: application/json
 {
     "Name": "Pizza",
     "Description": "A delicious pizza with tomato sauce and cheese."
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/register
+Content-Type: application/json
+
+{
+    "email": "tester@test.com",
+    "password" : "Password1!"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+    "email": "tester@test.com",
+    "password" : "Password1!"
 }
 
 ###
