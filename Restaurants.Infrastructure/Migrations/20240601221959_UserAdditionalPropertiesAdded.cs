@@ -11,7 +11,7 @@ namespace Restaurants.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Nacionality",
+                name: "Nationality",
                 table: "AspNetUsers",
                 type: "nvarchar(max)",
                 nullable: true,
@@ -23,7 +23,7 @@ namespace Restaurants.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<int>(
-                name: "Nacionality",
+                name: "Nationality",
                 table: "AspNetUsers",
                 type: "int",
                 nullable: false,
