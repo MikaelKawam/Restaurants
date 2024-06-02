@@ -17,12 +17,13 @@ namespace Restaurants.API.Middlewares
                 
                 logger.LogWarning(ex, ex.Message);
             }
-            //catch (ValidationException ex)
-            //{
-            //    logger.LogWarning(ex, ex.Message);
-            //    context.Response.StatusCode = 400;
-            //    await context.Response.WriteAsync(ex.Message);
-            //}
+            catch (ForbidException ex)
+            {
+                context.Response.StatusCode = 403;
+                await context.Response.WriteAsync("Access forbiden");
+
+                logger.LogWarning(ex, ex.Message);
+            }
             catch (Exception ex)
             {
                 logger.LogError(ex, ex.Message);

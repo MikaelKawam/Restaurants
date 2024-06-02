@@ -1,4 +1,5 @@
-﻿using Restaurants.Domain.Entities;
+﻿using Restaurants.Application.Common;
+using Restaurants.Domain.Entities;
 
 namespace Restaurants.Domain.Repositories
 {
@@ -9,6 +10,11 @@ namespace Restaurants.Domain.Repositories
         Task<int> Create(Restaurant entity);
         Task Delete(Restaurant entity);
         Task Update(Restaurant entity);
-
+        Task<(IEnumerable<Restaurant>, int)> GetAllMatchingAsync(string? searchPhrase,
+            int PagaSize,
+            int PageNumber,
+            string? SortBy,
+            SortDirection SortDirection
+            );
     }
 }
