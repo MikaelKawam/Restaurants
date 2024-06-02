@@ -15,7 +15,7 @@ namespace Restaurants.Application.Users
             var user = httpcontextacessor.HttpContext?.User;
             if (user == null)
             {
-                throw new InvalidOperationException("User context is not presente");
+                throw new InvalidOperationException("User context is not present");
             }
 
             if (user.Identity == null || !user.Identity.IsAuthenticated)
@@ -30,7 +30,7 @@ namespace Restaurants.Application.Users
             var dateOfBirthString = user.FindFirst(c => c.Type == "DateOfBirth")?.Value;
             var dateOfBirth = dateOfBirthString == null
                 ? (DateOnly?)null 
-                : DateOnly.ParseExact(dateOfBirthString, "yyy-MM-dd");
+                : DateOnly.ParseExact(dateOfBirthString, "yyyy-MM-dd");
 
             return new CurrentUser(userId, email, roles, nationality, dateOfBirth);
         }
